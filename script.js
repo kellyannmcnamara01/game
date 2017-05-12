@@ -21,8 +21,13 @@ window.onload = function() {
     } //end checkInput
 
     //call checkinput on submitbtn click
-    submitbtn.onclick = checkInput;
-	
-	
+    submitbtn.onclick = function() {
+        checkInput
+        if(userinput.value == answer){
+            console.log('yay');
+        } else {
+            console.log('boo');
+        }
+    };
 
 }; //end onload
