@@ -7,18 +7,25 @@
     </head>
     <body>
         <div class="wrapper">
-            <h1>hi</h1>
-			<!-- wrong answer div -->
-			<div id="wrong"></div>
+            <h1>Jess &amp; Kelly's Build a Game</h1>
+			<p>Can you guess the correct letter? We don't think you can!</p>
 			<!-- correct answer div -->
+			<div id="correct-div">
+			<p>Correct Letters</p>
 			<div id="correct"></div>
+			</div>
             <!-- user form -->
             <from>
-                <input type="text" id="userinput"  maxlength="1"/>
-                <button type="submit" id="submit" value="submit">submit</button>
+                <input type="text" id="userinput" maxlength="1"/>
+                <button type="submit" id="submit" value="submit">Guess</button>
             </form>
-            <!-- user output -->
+            <!-- validation output msg -->
             <div id="output"></div>
+			<!-- wrong answer div -->
+			<div id="wrong-div">
+			<p>Wrong Letters</p>
+			<div id="wrong"></div>
+			</div>
         </div>
     <!-- Scripts -->
     <script type="text/javascript" src="script.js"></script>

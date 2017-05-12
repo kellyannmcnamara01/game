@@ -6,23 +6,25 @@ window.onload = function() {
     //5. add correct user letters to correct letters array and display array
     //6. add wrong user letters to wrong letters array and display
 
+
     //vars
     var userinput = document.getElementById("userinput");
     var output = document.getElementById("output");
     var submitbtn = document.getElementById("submit");
 	var wrongdiv = document.getElementById("wrong");
 	var rightdiv = document.getElementById("correct");
+	var answer = "g";
+	var word = "booya";
+	
+	//letters array
 	var rightLetters = [];
 	var wrongLetters = [];
-	var answer = "G";
-	
-	console.log(answer);
 
     //check user input to regex
     function checkInput() {
         var userinputReg = /^([A-Za-z]{1})$/;
 		if(userinputReg.test(userinput.value)) {
-            output.innerHTML = userinput.value;
+            //output.innerHTML = userinput.value;
             return false;
         } else {
             output.innerHTML = "Must be a letter";
@@ -31,9 +33,14 @@ window.onload = function() {
     }; //end checkInput
 	
     //call checkinput on submitbtn click
-    submitbtn.onclick = function() {
+    submitbtn.onclick = function() { 
+		
+		//note: this works for 1st letter
+		var letter = word.substring(0,1);
+		
         checkInput();
-		if(userinput.value == answer){
+		
+		if(userinput.value == letter){
 			rightLetters.push(userinput.value);
 			rightdiv.innerHTML = rightLetters;
 			console.log(rightLetters);
