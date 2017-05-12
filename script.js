@@ -5,6 +5,6 @@ var output = document.getElementById("output");
 var submitbtn = document.getElementById("submit");
 
 submitbtn.onclick = function() {
-	var output.innerHTML = userinput;
+	output.innerHTML = userinput;
 	return false;
 }
