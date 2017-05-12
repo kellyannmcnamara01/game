@@ -6,6 +6,7 @@ window.onload = function() {
     var output = document.getElementById("output");
     var submitbtn = document.getElementById("submit");
     var userinputVal = /^([A-Za-z]{1})$/;
+	var answer = "G";
 
     //check user input to regex
     function checkInput() {
@@ -21,5 +22,7 @@ window.onload = function() {
 
     //call checkinput on submitbtn click
     submitbtn.onclick = checkInput;
+	
+	
 
 }; //end onload
