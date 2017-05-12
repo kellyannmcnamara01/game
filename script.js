@@ -1,5 +1,4 @@
 window.onload = function() {
-    //alert("hi");
     //1. check user input
     //2. create an onclick submit function
     //3. check user input to the answer
@@ -7,34 +6,43 @@ window.onload = function() {
     //5. add correct user letters to correct letters array and display array
     //6. add wrong user letters to wrong letters array and display
 
-
     //vars
     var userinput = document.getElementById("userinput");
     var output = document.getElementById("output");
     var submitbtn = document.getElementById("submit");
-    var userinputVal = /^([A-Za-z]{1})$/;
+	var wrongdiv = document.getElementById("wrong");
+	var rightdiv = document.getElementById("correct");
+	var rightLetters = [];
+	var wrongLetters = [];
 	var answer = "G";
+	
+	console.log(answer);
 
     //check user input to regex
     function checkInput() {
         var userinputReg = /^([A-Za-z]{1})$/;
-        if(userinputReg.test(userinput.value)) {
+		if(userinputReg.test(userinput.value)) {
             output.innerHTML = userinput.value;
             return false;
         } else {
-            output.innerHTML = "boo";
+            output.innerHTML = "Must be a letter";
             return false;
         }
-    } //end checkInput
-
+    }; //end checkInput
+	
     //call checkinput on submitbtn click
     submitbtn.onclick = function() {
-        checkInput
-        if(userinput.value == answer){
-            console.log('yay');
+        checkInput();
+		if(userinput.value == answer){
+			rightLetters.push(userinput.value);
+			rightdiv.innerHTML = rightLetters;
+			console.log(rightLetters);
+			
         } else {
-            console.log('boo');
+			wrongLetters.push(userinput.value);
+			wrongdiv.innerHTML = wrongLetters;
+			console.log(wrongLetters);
         }
-    };
+    }; //end submitbtn
 
 }; //end onload
