@@ -13,12 +13,23 @@ window.onload = function() {
     var submitbtn = document.getElementById("submit");
 	var wrongdiv = document.getElementById("wrong");
 	var rightdiv = document.getElementById("correct");
-	var answer = "g";
-	var word = "booya";
 	
-	//letters array
+	//array of guessed letters
 	var rightLetters = [];
 	var wrongLetters = [];
+	
+	//array of word arrays
+	var words = [
+		["b", "o", "o", "y", "a"],
+		["b", "a", "m"],
+		["c", "a", "n", "d", "y"]
+		];
+	
+	//randomize word selection
+	var answer = words[Math.floor(Math.random() * words.length)];
+	
+	//put _ for each letter in the random word
+	
 
     //check user input to regex
     function checkInput() {
@@ -36,7 +47,7 @@ window.onload = function() {
     submitbtn.onclick = function() { 
 		
 		//note: this works for 1st letter
-		var letter = word.substring(0,1);
+		//var letter = word.substring(0,1);
 		
         checkInput();
 		
