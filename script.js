@@ -21,16 +21,14 @@ window.onload = function() {
 	//array of guessed letters
 	var rightLetters = [];
 	var wrongLetters = [];
-	var letter = "G";
 	
-	//array of word arrays
+	//array of words
 	var words = [
-		["b", "o", "o", "y", "a"],
-		["b", "a", "m"],
-		["c", "a", "n", "d", "y"],
-		["s", "u", "p", "e", "r", "c", "a", "l"],
-		["t", "h", "i", "s"]
-		];
+	 "booya",
+	 "seamonkey",
+	 "supercalafragalisticexpialadotious",
+	 "tremendous"
+	];
 	
 	//randomize word selection
 	var answer = words[Math.floor(Math.random() * words.length)];
@@ -40,17 +38,22 @@ window.onload = function() {
 	//put randomized word into a new array to replace with _ in the next step
 	var spaces = new Array(answer.length);
 	
+	
 	//put _ for each letter in the random word
 	for (var i = 0; i < spaces.length; i++){
 	spaces[i] = "_ ";
 	gspaces.innerHTML = spaces;
-	}
+	} //end of for loop
 	
+	alert(answer);
+	
+	// keep track of how many letters left to guess
+	var remainingLetters = answer.length;
+		
     //check user input to regex
     function checkInput() {
         var userinputReg = /^([A-Za-z]{1})$/;
 		if(userinputReg.test(userinput.value)) {
-            //output.innerHTML = userinput.value;
             return false;
         } else {
             output.innerHTML = "Must be a letter";
@@ -58,7 +61,7 @@ window.onload = function() {
         }
     }; //end checkInput
 	
-    //call checkinput on submitbtn click
+/*************** on click ***************************/	
     submitbtn.onclick = function() { 
 		
 		//note: this works for 1st letter
@@ -66,16 +69,20 @@ window.onload = function() {
 		
         checkInput();
 		
-		if(userinput.value == letter){
+		//for each letter in the answer check for the user input
+		
+		for(var i = 0; i<answer.length; i++){
+			
+			if(userinput.value == answer[i]){
+				//spaces[i] = answer;
 			rightLetters.push(userinput.value);
 			rightdiv.innerHTML = rightLetters;
-			console.log(rightLetters);
-			
         } else {
 			wrongLetters.push(userinput.value);
 			wrongdiv.innerHTML = wrongLetters;
-			console.log(wrongLetters);
         }
+		} //end for loop
+		
     }; //end submitbtn
 
 }; //end onload
