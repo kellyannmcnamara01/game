@@ -8,6 +8,7 @@ window.onload = function() {
 	//7. Grab individual letters from words
 	//8. Randomize possible words
 	//9. Check guess within the answer
+	//10. Replace _ with correct letter
 
 
     //vars
@@ -72,17 +73,16 @@ window.onload = function() {
 		//for each letter in the answer check for the user input
 		
 		for(var i = 0; i<answer.length; i++){
-			
 			if(userinput.value == answer[i]){
-				//spaces[i] = answer;
 			rightLetters.push(userinput.value);
 			rightdiv.innerHTML = rightLetters;
+		
         } else {
 			wrongLetters.push(userinput.value);
 			wrongdiv.innerHTML = wrongLetters;
         }
 		} //end for loop
-		
+	
     }; //end submitbtn
 
 }; //end onload
