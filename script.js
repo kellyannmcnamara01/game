@@ -51,6 +51,8 @@ window.onload = function() {
 	// keep track of how many letters left to guess
 	var remainingLetters = answer.length;
 		
+/************** functions ******************************/
+
     //check user input to regex
     function checkInput() {
         var userinputReg = /^([A-Za-z]{1})$/;
@@ -62,30 +64,64 @@ window.onload = function() {
         }
     }; //end checkInput
 	
+	//Function to check to see if letter is already in the rightLetters array
+	function checkRightArray() {
+		/*var isInRightArray = rightLetters.includes(userinput.value);
+		alert(isInRightArray); */
+		
+		//alert(rightLetters.indexOf(userinput.value));
+		
+		
+			if(wrongLetters.indexOf(userinput.value) == -1){	
+				rightLetters.push(userinput.value);
+				rightdiv.innerHTML = rightLetters;
+			}
+	}; //endcheckRightArray
+		
+		//Function to check to see if letter is already in the wrongLetters array
+		function checkWrongArray(){
+		/*var isInWrongArray = wrongLetters.includes(userinput.value);
+		
+		if(isInWrongArray == false){
+			
+			wrongLetters.push(userinput.value);
+			wrongdiv.innerHTML = rightLetters;
+			}*/
+		 	if(wrongLetters.indexOf(userinput.value) == -1){
+				wrongLetters.push(userinput.value);
+				wrongdiv.innerHTML = rightLetters;
+			}
+		}; //endcheckWrongArray
+  	
+	
 /*************** on click ***************************/	
     submitbtn.onclick = function() { 
 		
-		//note: this works for 1st letter
-		//var letter = word.substring(0,1);
-		
         checkInput();
-		
+	
 		//for each letter in the answer check for the user input
 		
 		for(var i = 0; i<answer.length; i++){
-			if(userinput.value == answer[i]){
+	
+		if(userinput.value == answer[i]){
 			//replace underscore with correct letter
 			spaces[i] = answer[i];
 			gspaces.innerHTML = spaces;
-			//alert(answer[i]);
-			//alert(spaces[i]);
-			
+				
+			//checkRightArray();
+			/*
 			rightLetters.push(userinput.value);
 			rightdiv.innerHTML = rightLetters;
-		
-        } else {
+			alert("bam"); */
+			
+        }else {
+			
+			//checkWrongArray();
+			/*
 			wrongLetters.push(userinput.value);
 			wrongdiv.innerHTML = wrongLetters;
+			alert("boom"); */
+		
         }
 		} //end for loop
 	
