@@ -74,6 +74,12 @@ window.onload = function() {
 		
 		for(var i = 0; i<answer.length; i++){
 			if(userinput.value == answer[i]){
+			//replace underscore with correct letter
+			spaces[i] = answer[i];
+			gspaces.innerHTML = spaces;
+			//alert(answer[i]);
+			//alert(spaces[i]);
+			
 			rightLetters.push(userinput.value);
 			rightdiv.innerHTML = rightLetters;
 		
