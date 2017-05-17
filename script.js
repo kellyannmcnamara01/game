@@ -15,20 +15,24 @@ window.onload = function() {
     var userinput = document.getElementById("userinput");
     var output = document.getElementById("output");
     var submitbtn = document.getElementById("submit");
-	var wrongdiv = document.getElementById("wrong");
 	var rightdiv = document.getElementById("correct");
 	var gspaces = document.getElementById("gameSpaces");
 	
 	//array of guessed letters
-	var rightLetters = [];
-	var wrongLetters = [];
+	var guessedLetters = [];
+	
+	//var failed guessed
+	var failedguesses = 0;
 	
 	//array of words
 	var words = [
 	 "booya",
 	 "seamonkey",
 	 "supercalafragalisticexpialadotious",
-	 "tremendous"
+	 "tremendous",
+	 "hoooray",
+	 "whambamthankyou",
+	 "thisisreal"
 	];
 	
 	//randomize word selection
@@ -64,38 +68,18 @@ window.onload = function() {
         }
     }; //end checkInput
 	
-	//Function to check to see if letter is already in the rightLetters array
-	function checkRightArray() {
-		var isInRightArray = rightLetters.includes(userinput.value);
+	//Function to check to see if letter is already in the guessedLetters array
+	function checkGuessedArray() {
+		var isInRightArray = guessedLetters.includes(userinput.value);
 		//alert(isInRightArray);
 		
-			if(rightLetters.includes(userinput.value) === false){
-				rightLetters.push(userinput.value);
-				rightdiv.innerHTML = rightLetters;
+			if(guessedLetters.includes(userinput.value) === false){
+				guessedLetters.push(userinput.value);
+				rightdiv.innerHTML = guessedLetters;
+				//alert(guessedLetters);
 			}
 	}; //endcheckRightArray
-		
-		//Function to check to see if letter is already in the wrongLetters array
-	function checkWrongArray(){
-		/*var isInWrongArray = wrongLetters.includes(userinput.value);
-		
-		if(isInWrongArray == false){
 			
-			wrongLetters.push(userinput.value);
-			wrongdiv.innerHTML = rightLetters;
-			}*/
-			
-			//alert(wrongLetters.indexOf(userinput.value));
-			
-			var isInWrongArray = wrongLetters.includes(userinput.value);
-		//alert(isInRightArray);
-		
-			if(wrongLetters.includes(userinput.value) === false){		
-				wrongLetters.push(userinput.value);
-				wrongdiv.innerHTML = wrongLetters;
-			}		 			
-		}; //endcheckWrongArray
-  	
 	
 /*************** on click ***************************/	
     submitbtn.onclick = function() { 
@@ -111,7 +95,7 @@ window.onload = function() {
 			spaces[i] = answer[i];
 			gspaces.innerHTML = spaces;
 						
-			checkRightArray();
+			checkGuessedArray();
 
 			//alert(rightLetters.indexOf(userinput.value));
 			//return true;
@@ -123,7 +107,7 @@ window.onload = function() {
 			
         }else {
 			
-			checkWrongArray();
+			checkGuessedArray();
 			//alert("boom");
 			//alert(wrongLetters.indexOf(userinput.value));
 			
