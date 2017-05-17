@@ -66,20 +66,17 @@ window.onload = function() {
 	
 	//Function to check to see if letter is already in the rightLetters array
 	function checkRightArray() {
-		/*var isInRightArray = rightLetters.includes(userinput.value);
-		alert(isInRightArray); */
+		var isInRightArray = rightLetters.includes(userinput.value);
+		//alert(isInRightArray);
 		
-		//alert(rightLetters.indexOf(userinput.value));
-		
-		
-			if(wrongLetters.indexOf(userinput.value) == -1){	
+			if(rightLetters.includes(userinput.value) === false){
 				rightLetters.push(userinput.value);
 				rightdiv.innerHTML = rightLetters;
 			}
 	}; //endcheckRightArray
 		
 		//Function to check to see if letter is already in the wrongLetters array
-		function checkWrongArray(){
+	function checkWrongArray(){
 		/*var isInWrongArray = wrongLetters.includes(userinput.value);
 		
 		if(isInWrongArray == false){
@@ -87,10 +84,16 @@ window.onload = function() {
 			wrongLetters.push(userinput.value);
 			wrongdiv.innerHTML = rightLetters;
 			}*/
-		 	if(wrongLetters.indexOf(userinput.value) == -1){
+			
+			//alert(wrongLetters.indexOf(userinput.value));
+			
+			var isInWrongArray = wrongLetters.includes(userinput.value);
+		//alert(isInRightArray);
+		
+			if(wrongLetters.includes(userinput.value) === false){		
 				wrongLetters.push(userinput.value);
-				wrongdiv.innerHTML = rightLetters;
-			}
+				wrongdiv.innerHTML = wrongLetters;
+			}		 			
 		}; //endcheckWrongArray
   	
 	
@@ -100,15 +103,19 @@ window.onload = function() {
         checkInput();
 	
 		//for each letter in the answer check for the user input
-		
 		for(var i = 0; i<answer.length; i++){
 	
-		if(userinput.value == answer[i]){
+			if(userinput.value === answer[i]){
+			
 			//replace underscore with correct letter
 			spaces[i] = answer[i];
 			gspaces.innerHTML = spaces;
-				
-			//checkRightArray();
+						
+			checkRightArray();
+
+			//alert(rightLetters.indexOf(userinput.value));
+			//return true;
+						
 			/*
 			rightLetters.push(userinput.value);
 			rightdiv.innerHTML = rightLetters;
@@ -116,14 +123,22 @@ window.onload = function() {
 			
         }else {
 			
+			checkWrongArray();
+			//alert("boom");
+			//alert(wrongLetters.indexOf(userinput.value));
+			
 			//checkWrongArray();
+			}
+						
+			//checkWrongArray();
+			//return true;
 			/*
 			wrongLetters.push(userinput.value);
 			wrongdiv.innerHTML = wrongLetters;
 			alert("boom"); */
 		
-        }
-		} //end for loop
+       
+	} //end for loop
 	
     }; //end submitbtn
 
