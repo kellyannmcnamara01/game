@@ -11,20 +11,17 @@ window.onload = function() {
 	//10. Replace _ with correct letter
 
 
-    //vars
+    //get elements 
     var userinput = document.getElementById("userinput");
     var output = document.getElementById("output");
     var submitbtn = document.getElementById("submit");
 	var rightdiv = document.getElementById("correct");
 	var gspaces = document.getElementById("gameSpaces");
+	var guess = document.getElementById("guesses");
+	var remaining = document.getElementById("remaining");
+	var lives = document.getElementById("lives");
 	
-	//array of guessed letters
-	var guessedLetters = [];
-	
-	//var failed guessed
-	var failedguesses = 0;
-	
-	//array of words
+	//arrays
 	var words = [
 	 "booya",
 	 "seamonkey",
@@ -34,14 +31,31 @@ window.onload = function() {
 	 "whambamthankyou",
 	 "thisisreal"
 	];
+		
+	//array of guessed letters
+	var guessedLetters = [];
+	
+	//array of correct letters	
+	var correctLetters = [];
+	
+	//var number of guessed
+	var guessNum = 0;
+	guess.innerHTML = guessNum;
+	
 	
 	//randomize word selection
 	var answer = words[Math.floor(Math.random() * words.length)];
-	
-	//alert(answer);
+
 	
 	//put randomized word into a new array to replace with _ in the next step
 	var spaces = new Array(answer.length);
+	
+	// keep track of how many letters left to guess and display them
+	var remainingLetters = answer.length - correctLetters.length;
+	remaining.innerHTML = remainingLetters;
+	
+	//display lives
+	//var livesNum = remainingLetters.length - correctLetters;
 	
 	
 	//put _ for each letter in the random word
@@ -52,15 +66,15 @@ window.onload = function() {
 	
 	alert(answer);
 	
-	// keep track of how many letters left to guess
-	var remainingLetters = answer.length;
+	//correct guesses
+	
 		
 /************** functions ******************************/
 
     //check user input to regex
     function checkInput() {
-        var userinputReg = /^([A-Za-z]{1})$/;
-		if(userinputReg.test(userinput.value)) {
+        var userinputReg = /^[a-zA-Z]*$/;
+		if(userinput.value.match(userinputReg)) {
             return false;
         } else {
             output.innerHTML = "Must be a letter";
@@ -70,22 +84,22 @@ window.onload = function() {
 	
 	//Function to check to see if letter is already in the guessedLetters array
 	function checkGuessedArray() {
-		var isInRightArray = guessedLetters.includes(userinput.value);
+		//var isInRightArray = guessedLetters.includes(userinput.value);
 		//alert(isInRightArray);
 		
 			if(guessedLetters.includes(userinput.value) === false){
 				guessedLetters.push(userinput.value);
 				rightdiv.innerHTML = guessedLetters;
-				//alert(guessedLetters);
 			}
-	}; //endcheckRightArray
+		
 			
+	}; //endcheckRightArray
 	
 /*************** on click ***************************/	
     submitbtn.onclick = function() { 
 		
         checkInput();
-	
+		
 		//for each letter in the answer check for the user input
 		for(var i = 0; i<answer.length; i++){
 	
@@ -94,35 +108,28 @@ window.onload = function() {
 			//replace underscore with correct letter
 			spaces[i] = answer[i];
 			gspaces.innerHTML = spaces;
-						
+									
 			checkGuessedArray();
-
-			//alert(rightLetters.indexOf(userinput.value));
-			//return true;
-						
-			/*
-			rightLetters.push(userinput.value);
-			rightdiv.innerHTML = rightLetters;
-			alert("bam"); */
+				
+			//add letter to correct letters array
+			correctLetters.push(answer[i]);
 			
-        }else {
+			}else {
 			
-			checkGuessedArray();
-			//alert("boom");
-			//alert(wrongLetters.indexOf(userinput.value));
-			
-			//checkWrongArray();
+				checkGuessedArray();
 			}
-						
-			//checkWrongArray();
-			//return true;
-			/*
-			wrongLetters.push(userinput.value);
-			wrongdiv.innerHTML = wrongLetters;
-			alert("boom"); */
+				
+		} //end for loop
 		
-       
-	} //end for loop
+		//track num of guesses
+		guessNum += 1;
+		guess.innerHTML = guessNum;
+		
+		// keep track of how many letters left to guess
+		var remainingLetters = answer.length - correctLetters.length;
+		remaining.innerHTML = remainingLetters;
+	
+				
 	
     }; //end submitbtn
 
