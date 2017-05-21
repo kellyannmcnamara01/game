@@ -31,12 +31,18 @@ window.onload = function() {
 	 "whambamthankyou",
 	 "thisisreal"
 	];
+	
+	//max lives
+	var maxLives = 10;
 		
 	//array of guessed letters
 	var guessedLetters = [];
 	
 	//array of correct letters	
 	var correctLetters = [];
+	
+	//array of wrong letter
+	var wrongLetters = [];
 	
 	//var number of guessed
 	var guessNum = 0;
@@ -55,7 +61,8 @@ window.onload = function() {
 	remaining.innerHTML = remainingLetters;
 	
 	//display lives
-	//var livesNum = remainingLetters.length - correctLetters;
+	var livesNum = maxLives - wrongLetters.length;
+	lives.innerHTML = livesNum;
 	
 	
 	//put _ for each letter in the random word
@@ -95,6 +102,15 @@ window.onload = function() {
 			
 	}; //endcheckRightArray
 	
+	//Function to check to if wrong letter is already in the wrongLetters array
+	function checkwrongArray() {
+		//var isInRightArray = guessedLetters.includes(userinput.value);
+		//alert(isInRightArray);
+		
+		
+			
+	}; //endcheckRightArray
+	
 /*************** on click ***************************/	
     submitbtn.onclick = function() { 
 		
@@ -114,9 +130,13 @@ window.onload = function() {
 			//add letter to correct letters array
 			correctLetters.push(answer[i]);
 			
+			
 			}else {
 			
 				checkGuessedArray();
+				
+				//checkwrongArray();
+				
 			}
 				
 		} //end for loop
@@ -128,8 +148,29 @@ window.onload = function() {
 		// keep track of how many letters left to guess
 		var remainingLetters = answer.length - correctLetters.length;
 		remaining.innerHTML = remainingLetters;
-	
+		
+		//calculate lives
+		
+		if(wrongLetters.includes(userinput.value) === false){
+			   
+			   if(correctLetters.includes(userinput.value) === false){
 				
+					wrongLetters.push(userinput.value);
+				}
+			}
+		
+		
+		var livesNum = maxLives - wrongLetters.length;
+		lives.innerHTML = livesNum;
+		
+		if(correctLetters.length === answer.length){
+			alert("You Win");
+		}
+		
+		if(livesNum === 0){
+			alert("you loose asshole");
+		}
+			
 	
     }; //end submitbtn
 
