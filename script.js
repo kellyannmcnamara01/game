@@ -20,7 +20,8 @@ window.onload = function() {
 	var guess = document.getElementById("guesses");
 	var remaining = document.getElementById("remaining");
 	var lives = document.getElementById("lives");
-	
+	var canvas = document.getElementById('hangman');
+
 	//arrays
 	var words = [
 	 "booya",
@@ -32,8 +33,31 @@ window.onload = function() {
 	 "thisisreal"
 	];
 	
+	function drawLine(context, from, to) {
+    context.beginPath();
+    context.moveTo(from[0], from[1]);
+    context.lineTo(to[0], to[1]);
+    context.stroke();
+}
+	
+// Draw the canvas
+	var c = canvas.getContext('2d');
+	// reset the canvas and set basic styles
+	canvas.width = canvas.width;
+	c.lineWidth = 10;
+	c.strokeStyle = 'green';
+	c.font = 'bold 24px Optimer, Arial, Helvetica, sans-serif';
+	c.fillStyle = 'red';
+	c.strokeStyle = '#A52A2A';
+		drawLine(c, [30,185], [30,10]);
+			// create the arm of the gallows
+			c.lineTo(150,10);
+			c.stroke();
+	// draw the ground
+	drawLine(c, [20,190], [180,190]);
+		
 	//max lives
-	var maxLives = 10;
+	var maxLives = 6;
 		
 	//array of guessed letters
 	var guessedLetters = [];
@@ -102,14 +126,6 @@ window.onload = function() {
 			
 	}; //endcheckRightArray
 	
-	//Function to check to if wrong letter is already in the wrongLetters array
-	function checkwrongArray() {
-		//var isInRightArray = guessedLetters.includes(userinput.value);
-		//alert(isInRightArray);
-		
-		
-			
-	}; //endcheckRightArray
 	
 /*************** on click ***************************/	
     submitbtn.onclick = function() { 
@@ -135,8 +151,6 @@ window.onload = function() {
 			
 				checkGuessedArray();
 				
-				//checkwrongArray();
-				
 			}
 				
 		} //end for loop
@@ -156,21 +170,115 @@ window.onload = function() {
 			   if(correctLetters.includes(userinput.value) === false){
 				
 					wrongLetters.push(userinput.value);
+				   
 				}
 			}
 		
+		//Function to check to if wrong letter is already in the wrongLetters array
+	function drawHangman() {
+		alert("being called");
+		alert(livesNum);
+		if(livesNum === 5){
+			c.strokeStyle = 'black';
+			c.lineWidth = 3;
+			// draw rope
+			drawLine(c, [145,15], [145,30]);
+			// draw head
+			c.beginPath();
+			c.moveTo(160, 45);
+			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
+			c.stroke();
+			alert("do");
+		}
 		
+		else if(livesNum === 4){
+			// draw body
+			alert("5");
+			c.strokeStyle = 'black';
+			c.lineWidth = 3;
+			// draw rope
+			drawLine(c, [145,15], [145,30]);
+			// draw head
+			c.beginPath();
+			c.moveTo(160, 45);
+			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
+			c.stroke(); 
+			drawLine(c, [145,60], [145,130]);
+			alert("re");
+		
+		} else if (livesNum === 3){
+			// draw left arm
+			c.strokeStyle = 'black';
+			c.lineWidth = 3;
+			// draw rope
+			drawLine(c, [145,15], [145,30]);
+			// draw head
+			c.beginPath();
+			c.moveTo(160, 45);
+			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
+			c.stroke(); 
+			drawLine(c, [145,80], [110,90]);
+			alert("mi");
+		}
+		else if(livesNum === 2){
+			// draw right arm
+			c.strokeStyle = 'black';
+			c.lineWidth = 3;
+			// draw rope
+			drawLine(c, [145,15], [145,30]);
+			// draw head
+			c.beginPath();
+			c.moveTo(160, 45);
+			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
+			c.stroke(); 
+			drawLine(c, [145,80], [180,90]);
+			alert("fa");
+		}
+		else if(livesNum === 1){
+			// draw left leg
+			c.strokeStyle = 'black';
+			c.lineWidth = 3;
+			// draw rope
+			drawLine(c, [145,15], [145,30]);
+			// draw head
+			c.beginPath();
+			c.moveTo(160, 45);
+			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
+			c.stroke(); 
+			drawLine(c, [145,130], [130,170]);
+			alert("so");
+		}
+		
+		else{
+			// draw right leg and end game
+			c.strokeStyle = 'black';
+			c.lineWidth = 3;
+			// draw rope
+			drawLine(c, [145,15], [145,30]);
+			// draw head
+			c.beginPath();
+			c.moveTo(160, 45);
+			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
+			c.stroke(); 
+			drawLine(c, [145,130], [160,170]);
+			alert("la");
+		
+		}
+	}; //enddrawhangman
+
 		var livesNum = maxLives - wrongLetters.length;
 		lives.innerHTML = livesNum;
+		
+		drawHangman();
 		
 		if(correctLetters.length === answer.length){
 			alert("You Win");
 		}
 		
 		if(livesNum === 0){
-			alert("you loose asshole");
+			alert("Game Over");
 		}
-			
+		
 	
     }; //end submitbtn
 
