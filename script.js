@@ -1,16 +1,5 @@
 window.onload = function() {
-    //1. check user input
-    //2. create an onclick submit function
-    //3. check user input to the answer
-    //4. if user input is correct display entered number if user input is wrong display wrong letters in a different div
-    //5. add correct user letters to correct letters array and display array
-    //6. add wrong user letters to wrong letters array and display
-	//7. Grab individual letters from words
-	//8. Randomize possible words
-	//9. Check guess within the answer
-	//10. Replace _ with correct letter
-
-
+   
     //get elements 
     var userinput = document.getElementById("userinput");
     var output = document.getElementById("output");
@@ -38,7 +27,7 @@ window.onload = function() {
     context.moveTo(from[0], from[1]);
     context.lineTo(to[0], to[1]);
     context.stroke();
-}
+} 
 	
 // Draw the canvas
 	var c = canvas.getContext('2d');
@@ -176,8 +165,7 @@ window.onload = function() {
 		
 		//Function to check to if wrong letter is already in the wrongLetters array
 	function drawHangman() {
-		alert("being called");
-		alert(livesNum);
+		
 		if(livesNum === 5){
 			c.strokeStyle = 'black';
 			c.lineWidth = 3;
@@ -277,6 +265,7 @@ window.onload = function() {
 		
 		if(livesNum === 0){
 			alert("Game Over");
+			gspaces.innerHTML = answer;
 		}
 		
 	
