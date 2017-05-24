@@ -17,12 +17,17 @@ body {
 	font-family: 'Helvetica Neue', 'Arial', sans-serif;
 	font-size: 1.5em;
 	position: relative;
-	background: lightblue;
+	background: #DD1155;
 	color: white;
+}
+
+.white-title {
+	font-weight: bold;
 }
 
 .title {
 	font-weight: bold;
+	color: #1982C4;
 }
 
 #correct-div {
@@ -42,7 +47,7 @@ body {
 
 #game-space {
 	text-align: center;
-	background: #ffffff;
+	background: #FFF8E8;
 	color: black;
 	clear: both;
 	padding: 1em;
@@ -52,6 +57,7 @@ h1 {
 	font-size: 2em;
 	text-align: center;
 	text-transform: uppercase;
+	color: #1982C4;
 }
 
 #canvas-space {

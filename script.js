@@ -21,7 +21,18 @@ window.onload = function() {
 	 "website",
 	 "design",
 	 "accessibility",
-	 "usability"
+	 "usability",
+	 "toronto",
+	 "marketing",
+	 "database",
+	 "discover",
+	 "media",
+	 "web",
+     "development",
+	 "creativity",
+	 "community",
+	 "research",
+	 "summer"	
 	];
 	
 	function drawLine(context, from, to) {
