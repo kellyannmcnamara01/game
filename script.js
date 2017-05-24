@@ -13,13 +13,15 @@ window.onload = function() {
 
 	//arrays
 	var words = [
-	 "booya",
-	 "seamonkey",
-	 "supercalafragalisticexpialadotious",
-	 "tremendous",
-	 "hoooray",
-	 "whambamthankyou",
-	 "thisisreal"
+	 "javascript",
+	 "college",
+	 "humber",
+	 "awesome",
+	 "jquery",
+	 "website",
+	 "design",
+	 "accessibility",
+	 "usability"
 	];
 	
 	function drawLine(context, from, to) {
@@ -27,7 +29,7 @@ window.onload = function() {
     context.moveTo(from[0], from[1]);
     context.lineTo(to[0], to[1]);
     context.stroke();
-} 
+};
 	
 // Draw the canvas
 	var c = canvas.getContext('2d');
@@ -35,7 +37,7 @@ window.onload = function() {
 	canvas.width = canvas.width;
 	c.lineWidth = 10;
 	c.strokeStyle = 'green';
-	c.font = 'bold 24px Optimer, Arial, Helvetica, sans-serif';
+	c.font = 'bold 24px Arial, Helvetica, sans-serif';
 	c.fillStyle = 'red';
 	c.strokeStyle = '#A52A2A';
 		drawLine(c, [30,185], [30,10]);
@@ -45,14 +47,17 @@ window.onload = function() {
 	// draw the ground
 	drawLine(c, [20,190], [180,190]);
 		
-	//max lives
+//max lives
 	var maxLives = 6;
 		
-	//array of guessed letters
+//array of guessed letters
 	var guessedLetters = [];
 	
 	//array of correct letters	
 	var correctLetters = [];
+	
+	//word letters
+	var wordLetters = [];
 	
 	//array of wrong letter
 	var wrongLetters = [];
@@ -70,7 +75,7 @@ window.onload = function() {
 	var spaces = new Array(answer.length);
 	
 	// keep track of how many letters left to guess and display them
-	var remainingLetters = answer.length - correctLetters.length;
+	var remainingLetters = answer.length - wordLetters.length;
 	remaining.innerHTML = remainingLetters;
 	
 	//display lives
@@ -111,6 +116,7 @@ window.onload = function() {
 				guessedLetters.push(userinput.value);
 				rightdiv.innerHTML = guessedLetters;
 			}
+			
 		
 			
 	}; //endcheckRightArray
@@ -125,21 +131,21 @@ window.onload = function() {
 		for(var i = 0; i<answer.length; i++){
 	
 			if(userinput.value === answer[i]){
-			
-			//replace underscore with correct letter
-			spaces[i] = answer[i];
-			gspaces.innerHTML = spaces;
-									
-			checkGuessedArray();
+				spaces[i] = answer[i];
+				gspaces.innerHTML = spaces;
 				
-			//add letter to correct letters array
-			correctLetters.push(answer[i]);
+				wordLetters.push(answer[i]);
 			
-			
-			}else {
+				if (correctLetters.includes(userinput.value) === false){
+				
+					correctLetters.push(answer[i]);
+				}
+				
+				checkGuessedArray();
+			}
+			else {
 			
 				checkGuessedArray();
-				
 			}
 				
 		} //end for loop
@@ -149,7 +155,7 @@ window.onload = function() {
 		guess.innerHTML = guessNum;
 		
 		// keep track of how many letters left to guess
-		var remainingLetters = answer.length - correctLetters.length;
+		var remainingLetters = answer.length - wordLetters.length;
 		remaining.innerHTML = remainingLetters;
 		
 		//calculate lives
@@ -166,7 +172,11 @@ window.onload = function() {
 		//Function to check to if wrong letter is already in the wrongLetters array
 	function drawHangman() {
 		
-		if(livesNum === 5){
+		if(livesNum === 6){
+	
+		}
+		
+		else if(livesNum === 5){
 			c.strokeStyle = 'black';
 			c.lineWidth = 3;
 			// draw rope
@@ -259,7 +269,7 @@ window.onload = function() {
 		
 		drawHangman();
 		
-		if(correctLetters.length === answer.length){
+		if(wordLetters.length === answer.length){
 			alert("You Win");
 		}
 		
@@ -268,7 +278,7 @@ window.onload = function() {
 			gspaces.innerHTML = answer;
 		}
 		
-	
+	console.log(wordLetters);
     }; //end submitbtn
 
 }; //end onload
