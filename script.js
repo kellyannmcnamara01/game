@@ -89,10 +89,6 @@ window.onload = function() {
 	gspaces.innerHTML = spaces;
 	} //end of for loop
 	
-	alert(answer);
-	
-	//correct guesses
-	
 		
 /************** functions ******************************/
 
@@ -186,12 +182,10 @@ window.onload = function() {
 			c.moveTo(160, 45);
 			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
 			c.stroke();
-			alert("do");
 		}
 		
 		else if(livesNum === 4){
 			// draw body
-			alert("5");
 			c.strokeStyle = 'black';
 			c.lineWidth = 3;
 			// draw rope
@@ -202,7 +196,6 @@ window.onload = function() {
 			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
 			c.stroke(); 
 			drawLine(c, [145,60], [145,130]);
-			alert("re");
 		
 		} else if (livesNum === 3){
 			// draw left arm
@@ -216,7 +209,6 @@ window.onload = function() {
 			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
 			c.stroke(); 
 			drawLine(c, [145,80], [110,90]);
-			alert("mi");
 		}
 		else if(livesNum === 2){
 			// draw right arm
@@ -230,7 +222,6 @@ window.onload = function() {
 			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
 			c.stroke(); 
 			drawLine(c, [145,80], [180,90]);
-			alert("fa");
 		}
 		else if(livesNum === 1){
 			// draw left leg
@@ -244,7 +235,6 @@ window.onload = function() {
 			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
 			c.stroke(); 
 			drawLine(c, [145,130], [130,170]);
-			alert("so");
 		}
 		
 		else{
@@ -258,9 +248,7 @@ window.onload = function() {
 			c.moveTo(160, 45);
 			c.arc(145, 45, 15, 0, (Math.PI/180)*360);
 			c.stroke(); 
-			drawLine(c, [145,130], [160,170]);
-			alert("la");
-		
+			drawLine(c, [145,130], [160,170]);		
 		}
 	}; //enddrawhangman
 
@@ -277,8 +265,6 @@ window.onload = function() {
 			alert("Game Over");
 			gspaces.innerHTML = answer;
 		}
-		
-	console.log(wordLetters);
     }; //end submitbtn
 
 }; //end onload

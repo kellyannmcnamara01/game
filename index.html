@@ -2,36 +2,41 @@
     <html>
     <head>
         <meta charset="utf-8">
-        <title>Jess &amp; Kelly Try to Build a Game</title>
+        <title>Hangman Game</title>
 		<link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body>
         <div class="wrapper">
-            <h1>Jess &amp; Kelly's Build a Game</h1>
-			<p>Can you guess the correct letter? We don't think you can!</p>
-			<div id="gameSpaces"></div>
-			<!-- correct answer div -->
-			<div id="correct-div">
-			<p>Guessed Letters</p>
-			<div id="correct"></div>
-			</div>
-			<!-- lives left div -->
-			<div id="guesses-div">
-			<p>Number of Guesses</p>
-			<div id="guesses"></div>
-			</div>
-			<!-- Hangman Canvas -->
-			<canvas id="hangman">
-			</canvas>
 			<!-- remaining letters -->
 			<div id="remaining-div">
-			<p>Remaining Letters</p>
+			<p class="title">Remaining Letters</p>
 			<div id="remaining"></div>
 			</div>
+			<!-- correct answer div -->
+			<div id="correct-div">
+			<p class="title">Guessed Letters</p>
+			<div id="correct"></div>
+			</div>
+		</div>
+			<div id="game-space">
+			<h1>Hangman Game</h1>
+			<div id="gameSpaces"></div>
 			<!-- lives -->
+			<div class="wrapper">
 			<div id="lives-div">
-			<p>Lives</p>
+			<p class="title">Lives</p>
 			<div id="lives"></div>
+			</div>
+			<!-- number of guesses div -->
+			<div id="guesses-div">
+			<p class="title">Number of Guesses</p>
+			<div id="guesses"></div>
+			</div>
+			</div>
+			<!-- Hangman Canvas -->
+			<div id="canvas-space">
+			<canvas id="hangman">
+			</canvas>
 			</div>
             <!-- user form -->
             <from>
@@ -40,8 +45,7 @@
             </form>
             <!-- validation output msg -->
             <div id="output"></div>
-			
-        </div>
+			</div>
     <!-- Scripts -->
     <script type="text/javascript" src="script.js"></script>
     </body>

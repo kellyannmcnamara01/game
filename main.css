@@ -1,23 +1,70 @@
-
-* {
-    margin 0 auto;
-}
-*, *::before, *::after {
-    box-sizing: inherit;
-}
 html {
-    font-size: 100%;
-    box-sizing: border-box;
+  box-sizing:border-box;
 }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+.wrapper {
+  max-width: 1024px;
+  margin: auto;
+}
+
 body {
     font-size: 62.5%;
     margin: 0 auto;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    text-rendering: geometricPrecision;
+	font-family: 'Helvetica Neue', 'Arial', sans-serif;
+	font-size: 1.5em;
+	position: relative;
+	background: lightblue;
+	color: white;
 }
 
-.wrapper {
-    margin: 0 auto;
-    max-width: 960px;
-    margin-top: 100px;
+.title {
+	font-weight: bold;
+}
+
+#correct-div {
+	float: left;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	text-align: center;
+}
+
+#remaining-div {
+	float: right;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	text-align: center;
+}
+
+
+#game-space {
+	text-align: center;
+	background: #ffffff;
+	color: black;
+	clear: both;
+	padding: 1em;
+}
+
+h1 {
+	font-size: 2em;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#canvas-space {
+	padding: 2em;
+	text-align: center;
+}
+
+#lives-div {
+	float: left;
+	text-align: center;
+}
+
+#guesses-div {
+	float: right;
+	text-align: center;
 }
